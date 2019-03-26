@@ -9,7 +9,7 @@ const watch_dir = "/mnt/share";
 /** directory in which to save harvested screenshots */
 const output_dir = "/home/pi/media/steam";
 /** interval between harvests in seconds */
-const timerInterval = 10;
+const timer_interval = 10;
 
 // a couple regexes for file testing and manipulation
 
@@ -62,12 +62,12 @@ function scan() {
 
   // if we harvested any images, output to console
   if (num > 0) {
-    console.log(`${num} files copied. Sleeping for ${timerInterval} seconds.`);
+    console.log(`${num} files copied. Sleeping for ${timer_interval} seconds.`);
   }
   // update config file on disk with last scan time
   writeConfig();
   // set callback for next timeout
-  ticker = Timers.setTimeout(scan, timerInterval * 1000);
+  ticker = Timers.setTimeout(scan, timer_interval * 1000);
   return ticker;
 }
 
